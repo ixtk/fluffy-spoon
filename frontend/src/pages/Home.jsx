@@ -1,10 +1,8 @@
-import "./Home.scss"
+import "./Home.scss";
 import React, { useState } from "react";
+import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa"; // Don't forget these!
 
 export const HomePage = () => {
-  
-
-const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
 
@@ -71,7 +69,5 @@ const Navbar = () => {
     </div>
   );
 };
-}
-export default Navbar;
 
-
+export default HomePage;
