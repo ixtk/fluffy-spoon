@@ -1,39 +1,86 @@
-@use "@/partials/_reset";
 
-:root {
-  --col-accent: hsl(21, 90%, 48%);
-  --col-primary-3: hsl(217, 19%, 27%);
-  --col-primary-2: hsl(220, 9%, 46%);
-  --col-primary-1: hsl(225, 32%, 93%);
-  --col-secondary-2: hsl(240, 6%, 90%);
-  --col-secondary-1: hsl(240, 10%, 95%);
-  --col-light: hsl(0, 0%, 100%);
-  --col-dark: hsl(0, 0%, 0%);
+.sidebar {
+  width: 260px;
+  font-family: sans-serif;
+  padding: 1rem;
+  background-color: #fff;
 
-  --border-radius: 5px;
-  --box-shadow:
-    0 0 0 0 hsl(0, 0%, 0%), 0 0 0 0 hsla(0, 0%, 0%, 0),
-    0 1px 2px 0 var(--col-secondary-2);
-}
+  .filter-section {
+    margin-bottom: 1.5rem;
 
-body {
-  font-family: "Geist", sans-serif;
-  background-color: var(--col-light);
-}
+    h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.25rem;
+    }
 
-input,
-button {
-  font: inherit;
-  padding: 7px 10px;
-  border-radius: var(--border-radius);
-}
+    label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      gap: 0.5rem;
 
-input {
-  border: 1px solid var(--col-secondary-2);
-}
+      input[type='checkbox'] {
+        margin-right: 6px;
+      }
+    }
+  }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
+  .color-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .color-item {
+      display: flex;
+      align-items: center;
+
+      .color-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .size-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  
+    .size-box {
+      background: #f8f8f8;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+  
+      input[type='checkbox'] {
+        display: none;
+      }
+  
+      &:hover {
+        border-color: #333;
+      }
+  
+      &.selected {
+        background-color: #f18989;
+        color: #fff;
+        border-color: #000;
+      }
+    }
+  }
+  
+    }
+  
+
+
