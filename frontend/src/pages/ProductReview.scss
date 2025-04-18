@@ -1,0 +1,230 @@
+body {
+    font-family: "Geist", sans-serif;
+    background-color: var(--col-light);
+  }
+
+.reviewPage {
+    display: flex;
+    width: 50%;
+    height: 600px;
+    background-color:  hsl(0, 0%, 100%);
+    border-radius: 5px;
+    justify-self: center;
+    margin-top: 40rem;
+    border-top: 2px solid  hsl(225, 32%, 93%);
+    flex-direction: column;
+   
+    
+    
+    
+}
+
+.reviewTitle {
+    color:  hsl(0, 0%, 0%);
+    margin-top: 3rem;
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    z-index: 1;
+}
+
+.reviewButton {
+    width: 200px;
+    height: 50px;
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+    
+    
+}
+
+.writeReview {
+    display: flex;
+    width: 50%;
+    height: 600px;
+    background-color:  hsl(225, 32%, 93%);
+    border-radius: 5px;
+    justify-self: center;
+    flex-direction: column;
+    margin-top: -76rem;
+    color: hsl(0, 0%, 0%);  
+    box-shadow:
+    0 0 0 0 hsl(0, 0%, 0%), 0 0 0 0 hsla(0, 0%, 0%, 0),
+    0 1px 2px 0 var(--col-secondary-2);
+}
+
+.writeRevTitle {
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.ratingTitle {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: large
+
+}
+.headline {
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    font-size: large
+
+}
+.headlineInput {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width: 92%;
+
+}
+
+.review {
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    font-size: large
+
+}
+
+.reviewInput {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width: 92%;
+    height: 30%;
+    font-size: 1rem;
+    padding: 7px 10px;
+    border-radius: 5px;
+    resize: none;
+    
+
+}
+
+.cancelBtn {
+    width: 100px;
+    height: 30px;
+    background-color:hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40rem;
+    margin-top: 1rem;
+   
+
+}
+
+.submitBtn {
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(225, 32%, 93%);
+    width: 150px;
+    height: 40px;
+    margin-left: 47rem;
+    transform: translateY(-2.3rem);
+
+    
+
+}
+
+.error {
+    color: red;
+    display: flex;
+    margin-left: 2rem;
+}
+
+
+.stars {
+    display: flex;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.defaultStars {
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+}
+
+
+.reviews {
+    margin-top: 20px;
+    margin-left: 2rem;
+}
+
+.reviewCard{
+    display: flex;
+    width: 100%;
+    height: 600px;
+    background-color:  hsl(225, 32%, 93%);
+    justify-self: center;
+    flex-direction: column;
+    color: hsl(0, 0%, 0%);
+}
+
+.customerOne {
+    width: 100%;
+    height: 200px;
+    color: hsl(0, 0%, 100%);
+    flex-direction: column;
+    display: flex;
+    border-bottom:2px solid  hsl(225, 32%, 93%) ;
+}
+
+.customerName {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    color: hsl(0, 0%, 0%);
+}
+
+.customerTitle {
+    margin-left: 7rem;
+    background-color: hsl(240, 10%, 95%);
+    border-radius: 16px;
+    width: 150px;
+    font-size: 15px;
+    color: hsl(0, 0%, 59%);
+    margin-top: -1.7rem;
+}
+
+.verified {
+    margin-left: 1rem;
+}
+.customerRating {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    display: flex;
+}
+
+.date {
+    margin-left: 8rem;
+    margin-top: -6.3rem;
+    color: hsl(0, 0%, 59%);
+}
+
+.customerHeadline {
+    color: hsl(0, 0%, 0%);
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.customerReview {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    color: hsl(0, 0%, 59%);
+
+}
+  
+
+.customerTwo {
+    width: 100%;
+    height: 200px;
+    color: hsl(0, 0%, 100%);
+    flex-direction: column;
+    display: flex;
+    border-bottom:2px solid  hsl(225, 32%, 93%) ;
+}
