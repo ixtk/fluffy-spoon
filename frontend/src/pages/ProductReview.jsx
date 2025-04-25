@@ -32,10 +32,8 @@ export const ProductReview = () => {
       });
 
       const handleSubmit = () => {
-        setTimeout(() => {
-          console.log(formik.values);
-          setIsOpen(false)
-        }, 1500);
+        formik.handleSubmit(); 
+        setTimeout(() => setIsOpen(false), 1500);
       };
 
 
@@ -57,14 +55,14 @@ export const ProductReview = () => {
                 </label>
             <DialogTitle className={"headline"}>Headline</DialogTitle>
             <label htmlFor="">
-            <input value={formik.values.fullName} onChange={formik.handleChange} onBlur={formik.handleBlur} name="headline" type="text" className="headlineInput" placeholder="Summarize your experience"></input> {formik.touched.headline &&
+            <input value={formik.values.headline} onChange={formik.handleChange} onBlur={formik.handleBlur} name="headline" type="text" className="headlineInput" placeholder="Summarize your experience"></input> {formik.touched.headline &&
                 <span className="error">
                 {formik.errors.headline}
                 </span>}
             </label>
             <DialogTitle className={"review"}>Review</DialogTitle>
             <label htmlFor="">
-            <textarea value={formik.values.fullName}
+            <textarea value={formik.values.review}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur} name="review" className="reviewInput" placeholder="Share your experience with this product" ></textarea>
                 {formik.touched.review &&
@@ -97,11 +95,14 @@ export const ProductReview = () => {
          {reviews && reviews.length > 0 ? (
          <ul>
           {reviews.map((review, index) => (
-           <li key={index}>
-            <h3>{review.headline}</h3>
-            <p>{review.review}</p>
-             <p>Rating: {review.rating}/5</p>
-            </li>
+           <div className="customerOne" >
+           <h3 className="customerName">Guest</h3>
+           <div className="customerTitle"><p className="verified">NonVerified Purchase</p></div>
+           <Rating className="defaultStars customerRating" size="small" name="half-rating-read" defaultValue={review.rating} precision={0.5} readOnly />
+           <h3 className="customerHeadline">{review.headline}</h3>
+           <p className="customerReview">{review.review}</p>
+           <p className="date">2/5/2024</p>
+           </div>
             ))}
            </ul>
            ) : (
@@ -114,3 +115,4 @@ export const ProductReview = () => {
 
     </>
 }
+
