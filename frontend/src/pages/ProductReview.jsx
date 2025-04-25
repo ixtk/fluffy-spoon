@@ -93,7 +93,7 @@ export const ProductReview = () => {
            <p className="date">2/10/2024</p>
          </div>
          {reviews && reviews.length > 0 ? (
-         <ul>
+         <div>
           {reviews.map((review, index) => (
            <div className="customerOne" >
            <h3 className="customerName">Guest</h3>
@@ -104,7 +104,7 @@ export const ProductReview = () => {
            <p className="date">2/5/2024</p>
            </div>
             ))}
-           </ul>
+           </div>
            ) : (
         <p>No more reviews yet!</p>
           )}
