@@ -228,3 +228,19 @@ body {
     display: flex;
     border-bottom:2px solid  hsl(225, 32%, 93%) ;
 }
+
+.nonVerify {
+    margin-left: 7rem;
+    background-color: hsl(240, 10%, 95%);
+    border-radius: 16px;
+    width: 180px;
+    font-size: 15px;
+    color: hsl(0, 0%, 59%);
+    margin-top: -1.7rem;
+
+}
+
+.noReview {
+    display: flex;
+    justify-self: center;
+}

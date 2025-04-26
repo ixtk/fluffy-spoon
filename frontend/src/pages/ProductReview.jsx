@@ -33,7 +33,7 @@ export const ProductReview = () => {
 
       const handleSubmit = () => {
         formik.handleSubmit(); 
-        setTimeout(() => setIsOpen(false), 1500);
+        setTimeout(() => setIsOpen(false), 200);
       };
 
 
@@ -95,9 +95,9 @@ export const ProductReview = () => {
          {reviews && reviews.length > 0 ? (
          <div>
           {reviews.map((review, index) => (
-           <div className="customerOne" >
+           <div className="customerOne" key={index}>
            <h3 className="customerName">Guest</h3>
-           <div className="customerTitle"><p className="verified">NonVerified Purchase</p></div>
+           <div className="nonVerify"><p className="verified">NonVerified Purchase</p></div>
            <Rating className="defaultStars customerRating" size="small" name="half-rating-read" defaultValue={review.rating} precision={0.5} readOnly />
            <h3 className="customerHeadline">{review.headline}</h3>
            <p className="customerReview">{review.review}</p>
@@ -106,7 +106,7 @@ export const ProductReview = () => {
             ))}
            </div>
            ) : (
-        <p>No more reviews yet!</p>
+        <p className="noReview">No more reviews yet!</p>
           )}
        </div>
 
