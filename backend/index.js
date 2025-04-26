@@ -5,7 +5,7 @@ import mongoose from "mongoose"
 import bcrypt from "bcrypt"
 import { loginSchema, registerSchema } from "./schema.js"
 import { validateSchema, verifyAuth } from "./middleware.js"
-import { User } from "./models.js"
+import { User, Product } from "./models.js"
 import cors from "cors"
 
 export const app = express()
@@ -37,6 +37,14 @@ app.use(
 
 app.get("/secret", verifyAuth, (req, res) => {
   res.json({ secret: "2 x 2 = 4" })
+})
+
+app.post("/products", async (req, res) => {
+  const { name, category, regularPrice, salePrice, isOnSale } = req.body
+
+  const newProduct = await Product.create({ name, category, regularPrice, salePrice, isOnSale })
+
+  res.status(201).json(newProduct)
 })
 
 app.post(
