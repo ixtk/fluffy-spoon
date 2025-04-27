@@ -22,17 +22,25 @@ const productSchema = new mongoose.Schema(
     regularPrice: { type: Number, required: true },
     salePrice: Number,
     isOnSale: { type: Boolean, default: false },
-    // variants: [
-    //   {
-    //     color: { type: String, required: true },
-    //     stock: { type: Number, required: true },
-    //     sizes: [{ men: Number, women: Number }],
-    //     images: [String]
-    //   }
-    // ]
+    variants: [
+      {
+        color: { type: String, required: true },
+        stock: { type: Number, required: true },
+        sizes: [{ men: Number, women: Number }],
+        images: [{ type: String, required: true }]
+      }
+    ],
+    reviews: [
+      { 
+        text: String,
+        headline: { type: String, required: true },
+        // userId: ref
+        starRating: Number
+      }
+    ]
   },
   { timestamps: true }
 )
 
 export const User = mongoose.model("User", userSchema)
-export const Prouct = mongoose.model("Prouct", productSchema)
+export const Product = mongoose.model("Product", productSchema)

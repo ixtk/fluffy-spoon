@@ -40,11 +40,22 @@ app.get("/secret", verifyAuth, (req, res) => {
 })
 
 app.post("/products", async (req, res) => {
-  const { name, category, regularPrice, salePrice, isOnSale } = req.body
+  const newProductValues = req.body
 
-  const newProduct = await Product.create({ name, category, regularPrice, salePrice, isOnSale })
+  const newProduct = await Product.create(newProductValues)
 
   res.status(201).json(newProduct)
+})
+
+
+app.get("/products/:id", async (req, res) => {
+  // product/abc
+  // { id: "abc" }
+  const { id } = req.params
+
+  const product = await Product.findById(id)
+
+  res.json(product)
 })
 
 app.post(
