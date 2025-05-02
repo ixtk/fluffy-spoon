@@ -34,7 +34,7 @@ const productSchema = new mongoose.Schema(
       { 
         text: String,
         headline: { type: String, required: true },
-        // userId: ref
+        userId: { type: mongoose.Types.ObjectId, ref: "User" },
         starRating: Number
       }
     ]

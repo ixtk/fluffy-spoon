@@ -47,12 +47,34 @@ app.post("/products", validateSchema(productSchema), async (req, res) => {
   res.status(201).json(newProduct)
 })
 
+app.post("/products/:id/review", async (req, res) => {
+  const product = await Product.findById(req.params.id)
+
+  product.reviews.push(req.body)
+
+  await product.save()
+
+  res.json(product)
+})
+
+app.delete("/products/:productId/review/:reviewId", async (req, res) => {
+  const { productId, reviewId } = req.params
+
+  const product = await Product.findById(productId)
+
+  await product.reviews.id(reviewId).deleteOne()
+
+  await product.save()
+
+  res.json(product)
+})
+
 app.get("/products/:id", async (req, res) => {
   // product/abc
   // { id: "abc" }
   const { id } = req.params
 
-  const product = await Product.findById(id)
+  const product = await Product.findById(id).populate("reviews.userId", "username")
 
   res.json(product)
 })
