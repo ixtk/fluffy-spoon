@@ -1,4 +1,4 @@
-import { object, string, ref } from "yup"
+import { object, string, ref, number, boolean, array } from "yup"
 
 export const loginSchema = object({
   email: string()
@@ -22,4 +22,32 @@ export const registerSchema = object({
   confirmPassword: string()
     .oneOf([ref("password"), null], "Passwords do not match")
     .required("Password confirmation is required")
+})
+
+export const productSchema = object({
+  name: string().required(),
+  category: string().required(),
+  regularPrice: number().required(),
+  salePrice: number().optional(),
+  isOnSale: boolean().default(false),
+  variants: array().of(
+    object({
+      color: string().required(),
+      stock: number().required(),
+      sizes: array().of(
+        object({
+          men: number().optional(),
+          women: number().optional(),
+        })
+      ).optional(),
+      images: array().of(string().required()),
+    })
+  ).optional(),
+  reviews: array().of(
+    object({
+      text: string().optional(),
+      headline: string().required(),
+      starRating: number().optional(),
+    })
+  ).optional(),
 })

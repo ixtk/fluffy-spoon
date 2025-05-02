@@ -3,7 +3,7 @@ import session from "express-session"
 import MongoStore from "connect-mongo"
 import mongoose from "mongoose"
 import bcrypt from "bcrypt"
-import { loginSchema, registerSchema } from "./schema.js"
+import { loginSchema, productSchema, registerSchema } from "./schema.js"
 import { validateSchema, verifyAuth } from "./middleware.js"
 import { User, Product } from "./models.js"
 import cors from "cors"
@@ -39,14 +39,13 @@ app.get("/secret", verifyAuth, (req, res) => {
   res.json({ secret: "2 x 2 = 4" })
 })
 
-app.post("/products", async (req, res) => {
+app.post("/products", validateSchema(productSchema), async (req, res) => {
   const newProductValues = req.body
 
   const newProduct = await Product.create(newProductValues)
 
   res.status(201).json(newProduct)
 })
-
 
 app.get("/products/:id", async (req, res) => {
   // product/abc
