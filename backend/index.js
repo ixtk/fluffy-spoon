@@ -7,6 +7,7 @@ import { loginSchema, productSchema, registerSchema } from "./schema.js"
 import { validateSchema, verifyAuth } from "./middleware.js"
 import { User, Product } from "./models.js"
 import cors from "cors"
+import { productRouter } from "./productRouter.js"
 
 export const app = express()
 
@@ -35,48 +36,10 @@ app.use(
   })
 )
 
+app.use("/products", productRouter)
+
 app.get("/secret", verifyAuth, (req, res) => {
   res.json({ secret: "2 x 2 = 4" })
-})
-
-app.post("/products", validateSchema(productSchema), async (req, res) => {
-  const newProductValues = req.body
-
-  const newProduct = await Product.create(newProductValues)
-
-  res.status(201).json(newProduct)
-})
-
-app.post("/products/:id/review", async (req, res) => {
-  const product = await Product.findById(req.params.id)
-
-  product.reviews.push(req.body)
-
-  await product.save()
-
-  res.json(product)
-})
-
-app.delete("/products/:productId/review/:reviewId", async (req, res) => {
-  const { productId, reviewId } = req.params
-
-  const product = await Product.findById(productId)
-
-  await product.reviews.id(reviewId).deleteOne()
-
-  await product.save()
-
-  res.json(product)
-})
-
-app.get("/products/:id", async (req, res) => {
-  // product/abc
-  // { id: "abc" }
-  const { id } = req.params
-
-  const product = await Product.findById(id).populate("reviews.userId", "username")
-
-  res.json(product)
 })
 
 app.post(
