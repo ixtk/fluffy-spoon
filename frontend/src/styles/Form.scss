@@ -1,0 +1,35 @@
+@use './Variables.scss';
+.reviewPage {
+    display: flex;
+    width: 50%;
+    height: 600px;
+    background-color: Variables.$col-white;
+    border-radius: 5px;
+    flex-direction: column;
+    border-top: 2px solid Variables.$col-light;
+    padding: 2rem;
+    gap: 1.5rem;
+    justify-self: center;
+    
+  }
+    
+  .headlineInput,
+  .reviewInput {
+    padding-left: 2rem;
+    padding-top: 1rem;
+    width: 92%;
+    border-radius: 5px;
+  }
+  
+  .reviewInput {
+    height: 100px;
+    font-size: 1rem;
+    padding: 7px 10px;
+    resize: none;
+  }
+  
+  .error {
+    color: red;
+    display: flex;
+  }
+  

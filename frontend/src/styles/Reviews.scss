@@ -1,0 +1,51 @@
+@use './Variables.scss';
+@use './Mixin.scss' ;
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+  }
+  
+  .reviewCard {
+    @include Mixin.card-style;
+    color: Variables.$col-dark;
+    height: 600px;
+  }
+  
+  .review {
+    @include Mixin.card-style;
+    height: 200px;
+  }
+  
+  .customerName,
+  .customerHeadline,
+  .customerReview,
+  .date {
+    padding-left: 2rem;
+  }
+  
+  .customerRating {
+    padding-left: 2rem;
+    padding-top: 1rem;
+  }
+  
+  .nameWithBadge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+  }
+  
+  .customerTitle,
+  .nonVerify {
+    background-color: Variables.$badge-bg;
+    border-radius: 16px;
+    width: fit-content;
+    font-size: 15px;
+    color: Variables.$col-muted;
+    padding: 0.5rem 1rem;
+  }
+  

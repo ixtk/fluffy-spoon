@@ -1,0 +1,15 @@
+@use './Variables.scss';
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin card-style {
+    width: 100%;
+    background-color: Variables.$col-light;
+    flex-direction: column;
+    display: flex;
+    border-bottom: 2px solid Variables.$col-light;
+  }
+  

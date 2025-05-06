@@ -1,8 +1,8 @@
-import "./ProductReview.scss"
+import '../styles/Main.scss';
 import { Dialog } from '@headlessui/react'
 import { useState } from "react"
 import { useFormik } from "formik";
-import { object, string } from "yup";
+import { object, string, number } from "yup";
 import Rating from '@mui/material/Rating';
 
 export const ProductReview = () => {
@@ -12,7 +12,7 @@ export const ProductReview = () => {
     const formSchema = object({
         headline: string().min(3).max(20).required(),
         review: string().min(3).max(200).required(),
-        rating: string().min(1).max(5).required(),
+        rating: number().min(1).max(5).required(),
     });
 
     const formik = useFormik({
@@ -32,6 +32,22 @@ export const ProductReview = () => {
         formik.handleSubmit(); 
         setTimeout(() => setIsOpen(false), 200);
     };
+    const staticReviews = [
+        {
+          name: "John D.",
+          rating: 4.5,
+          headline: "Best running shoes ever!",
+          review: "I love the color and the way they feel on. Only thing is I got them a little too big but other than that I love them.",
+          date: "2/5/2024"
+        },
+        {
+          name: "Sarah M.",
+          rating: 4.0,
+          headline: "Great shoes, but runs small",
+          review: "Beautiful, feels great, looks great, comfortable. Not sure about durability because I haven't had them long enough yet.",
+          date: "2/10/2024"
+        }
+      ];
 
     return (
         <>
@@ -70,7 +86,7 @@ export const ProductReview = () => {
                                 onBlur={formik.handleBlur}
                                 name="headline"
                                 type="text"
-                                className="headlineInput"
+                                className="headlineInput "
                                 placeholder="Summarize your experience"
                             />
                             {formik.touched.headline && (
@@ -78,7 +94,7 @@ export const ProductReview = () => {
                             )}
                         </label>
 
-                        <h3 className="review">Review</h3>
+                        <h3 className="reviewName">Review</h3>
                         <label htmlFor="">
                             <textarea
                                 value={formik.values.review}
@@ -101,32 +117,31 @@ export const ProductReview = () => {
                 </Dialog>
 
                 <div className="reviews">
-                    <div className="customerOne">
-                        <div className="nameWithBadge">
-                            <h3 className="customerName">John D.</h3>
-                            <div className="customerTitle"><p className="verified">Verified Purchase</p></div>
-                        </div>
-                        <Rating className="defaultStars customerRating" size="small" name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
-                        <h3 className="customerHeadline">Best running shoes ever!</h3>
-                        <p className="customerReview">I love the color and the way they feel on. Only thing is I got them a little too big but other than that I love them.</p>
-                        <p className="date">2/5/2024</p>
+                {staticReviews.map((s,i) => (
+                    <div className="review" key={i}>
+                    <div className="nameWithBadge">
+                    <h3 className="customerName">{s.name}</h3>
+                    <div className="customerTitle">
+                    <p className="verified">Verified Purchase</p>
                     </div>
-
-                    <div className="customerTwo">
-                        <div className="nameWithBadge">
-                            <h3 className="customerName">Sarah M.</h3>
-                            <div className="customerTitle"><p className="verified">Verified Purchase</p></div>
-                        </div>
-                        <Rating className="defaultStars customerRating" size="small" name="half-rating-read" defaultValue={4.0} precision={0.5} readOnly />
-                        <h3 className="customerHeadline">Great shoes, but runs small</h3>
-                        <p className="customerReview">Beautiful, feels great, looks great, comfortable. Not sure about durability because I haven't had them long enough yet.</p>
-                        <p className="date">2/10/2024</p>
                     </div>
-
+                    <Rating
+                    className="defaultStars customerRating"
+                    size="small"
+                    name="half-rating-read"
+                    defaultValue={s.rating}
+                    precision={0.5}
+                    readOnly
+                    />
+                    <h3 className="customerHeadline">{s.headline}</h3>
+                    <p className="customerReview">{s.review}</p>
+                    <p className="date">{s.date}</p>
+                    </div>
+                  ))}
                     {reviews && reviews.length > 0 ? (
                         <div>
                             {reviews.map((review, index) => (
-                                <div className="customerOne" key={index}>
+                                <div className="review" key={index}>
                                     <div className="nameWithBadge">
                                         <h3 className="customerName">Guest</h3>
                                         <div className="nonVerify"><p className="verified">NonVerified Purchase</p></div>

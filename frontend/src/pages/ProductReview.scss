@@ -1,296 +1,215 @@
 body {
-    font-family: "Geist", sans-serif;
-    background-color: var(--col-light);
-    
-  }
+  font-family: "Geist", sans-serif;
+  background-color: var(--col-light);
+}
 
 .reviewPage {
-    display: flex;
-    width: 50%;
-    height: 600px;
-    background-color:  hsl(0, 0%, 100%);
-    border-radius: 5px;
-    justify-self: center;
-    margin-top: 40rem;
-    border-top: 2px solid  hsl(225, 32%, 93%);
-    flex-direction: column;
-   
-    
-    
-    
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 600px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-top: 2px solid hsl(225, 32%, 93%);
+  padding: 2rem;
+  gap: 1.5rem;
 }
 
 .reviewTitle {
-    color:  hsl(0, 0%, 0%);
-    margin-top: 3rem;
-    margin-left: 2rem;
-    font-size: 1.4rem;
-    z-index: 1;
+  color: hsl(0, 0%, 0%);
+  font-size: 1.4rem;
+  z-index: 1;
 }
 
 .reviewButton {
-    width: 200px;
-    height: 50px;
-    background-color: hsl(0, 0%, 0%);
-    color: hsl(0, 0%, 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-end;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 1;
-    
-    
+  width: 200px;
+  height: 50px;
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1;
 }
 
-    // .writeReview {
-    //     display: flex;
-    //     width: 50%;
-    //     height: 600px;
-    //     background-color:  hsl(225, 32%, 93%);
-    //     border-radius: 5px;
-    //     justify-self: center;
-    //     flex-direction: column;
-    //     margin-top: -76rem;
-    //     color: hsl(0, 0%, 0%);  
-    //     box-shadow:
-    //     0 0 0 0 hsl(0, 0%, 0%), 0 0 0 0 hsla(0, 0%, 0%, 0),
-    //     0 1px 2px 0 var(--col-secondary-2);
-    // }
-
-.writeRevTitle {
-    margin-top: 2rem;
-    margin-left: 2rem;
+.writeRevTitle,
+.ratingTitle,
+.headline,
+.reviewName {
+  font-size: large;
 }
 
-.ratingTitle {
-    margin-top: 2rem;
-    margin-left: 2rem;
-    font-size: large
-
-}
-.headline {
-    margin-top: 1.5rem;
-    margin-left: 2rem;
-    font-size: large
-
-}
-.headlineInput {
-    margin-top: 1rem;
-    margin-left: 2rem;
-    width: 92%;
-
+.ratingTitle,
+.writeRevTitle,
+.headline,
+.review,
+.stars,
+.defaultStars,
+.headlineInput,
+.error {
+  padding-left: 2rem;
 }
 
+.writeRevTitle,
+.ratingTitle,
+.headline,
 .review {
-    margin-top: 1.5rem;
-    margin-left: 2rem;
-    font-size: large
+  padding-top: 2rem;
+}
 
+.headlineInput {
+  width: 92%;
+}
+
+.headlineInput {
+  padding-top: 1rem;
 }
 
 .reviewInput {
-    margin-top: 1rem;
-    margin-left: 2rem;
-    width: 92%;
-    height: 30%;
-    font-size: 1rem;
-    padding: 7px 10px;
-    border-radius: 5px;
-    resize: none;
-    
-
+  height: 100px;
+  font-size: 1rem;
+  padding: 7px 10px;
+  border-radius: 5px;
+  resize: none;
+  padding-top: 1rem;
+  width: 92%;
 }
 
-// .cancelBtn {
-//     width: 100px;
-//     height: 30px;
-//     background-color:hsl(0, 0%, 100%);
-//     color: hsl(0, 0%, 0%);
-//     z-index: 99;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin-left: 40rem;
-//     margin-top: 1rem;
-   
-
-// }
-
 .submitBtn {
-    background-color: hsl(0, 0%, 0%);
-    color: hsl(225, 32%, 93%);
-    width: 400px;
-    height: 40px;
-    margin-left: 40rem;
-
-
-    
-
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(225, 32%, 93%);
+  width: 300px;
+  height: 40px;
+  align-self: flex-end;
 }
 
 .error {
-    color: red;
-    display: flex;
-    margin-left: 2rem;
+  color: red;
+  display: flex;
 }
 
-
-.stars {
-    display: flex;
-    margin-top: 1rem;
-    margin-left: 2rem;
-}
-
+.stars,
 .defaultStars {
-    cursor: pointer;
-    margin-top: 2rem;
-    margin-left: 2rem;
-
+  display: flex;
+  padding-top: 1rem;
 }
-
 
 .reviews {
-    margin-top: 20px;
-    margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.reviewCard{
-    display: flex;
-    width: 100%;
-    height: 600px;
-    background-color:  hsl(225, 32%, 93%);
-    justify-self: center;
-    flex-direction: column;
-    color: hsl(0, 0%, 0%);
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 600px;
+  background-color: hsl(225, 32%, 93%);
+  color: hsl(0, 0%, 0%);
 }
 
-.customerOne {
-    width: 100%;
-    height: 200px;
-    color: hsl(0, 0%, 100%);
-    flex-direction: column;
-    display: flex;
-    border-bottom:2px solid  hsl(225, 32%, 93%) ;
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid hsl(225, 32%, 93%);
+  padding: 1rem 2rem;
+  box-sizing: border-box;
 }
 
 .customerName {
-    margin-left: 2rem;
-    margin-top: 1rem;
-    display: flex;
-    color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 0%);
 }
 
-.customerTitle {
-    margin-left: 0.5rem;
-    background-color: hsl(240, 10%, 95%);
-    border-radius: 16px;
-    width: 150px;
-    font-size: 15px;
-    color: hsl(0, 0%, 59%);
-    margin-top: 1rem;
+.nameWithBadge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.verified {
-    margin-left: 1rem;
+.customerTitle,
+.nonVerify {
+  background-color: hsl(240, 10%, 95%);
+  border-radius: 16px;
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 59%);
 }
+
 .customerRating {
-    margin-left: 2rem;
-    margin-top: 1rem;
-    display: flex;
-}
-
-.date {
-    margin-left: 8rem;
-    margin-top: -6.3rem;
-    color: hsl(0, 0%, 59%);
+  display: flex;
+  padding-top: 1rem;
 }
 
 .customerHeadline {
-    color: hsl(0, 0%, 0%);
-    margin-left: 2rem;
-    margin-top: 1rem;
+  padding-top: 1rem;
+  font-size: 1rem;
+  color: hsl(0, 0%, 0%);
 }
 
 .customerReview {
-    margin-left: 2rem;
-    margin-top: 1rem;
-    color: hsl(0, 0%, 59%);
-
-}
-  
-
-.customerTwo {
-    width: 100%;
-    height: 200px;
-    color: hsl(0, 0%, 100%);
-    flex-direction: column;
-    display: flex;
-    border-bottom:2px solid  hsl(225, 32%, 93%) ;
+  padding-top: 0.5rem;
+  color: hsl(0, 0%, 59%);
 }
 
-.nonVerify {
-    margin-left: 0.5rem;
-    background-color: hsl(240, 10%, 95%);
-    border-radius: 16px;
-    width: 180px;
-    font-size: 15px;
-    color: hsl(0, 0%, 59%);
-    margin-top: 1rem;
-
+.date {
+  margin-top: auto;
+  color: hsl(0, 0%, 59%);
 }
 
 .noReview {
-    display: flex;
-    justify-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .modalBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modalContainer {
-    background: white;
-    width: 900px;
-    height: 700px;
-    border-radius: 10px;
-    padding: 2rem;
-    max-height: 90vh;
-    position: relative;
-  }
-  
-  .closeButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .modalButtons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  
-  .nameWithBadge {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContainer {
+  background: white;
+  width: 900px;
+  height: 700px;
+  border-radius: 10px;
+  padding: 2rem;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
 
 @media (max-width: 768px) {
     body {
