@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import './App.scss'; 
@@ -8,7 +7,7 @@ const FilterSidebar = () => {
     gender: [],
     sale: [],
     color: [],
-    price: [],
+    price: {}, // now expecting an object like { min: 25, max: 50 }
     size: [],
   };
 
@@ -16,9 +15,17 @@ const FilterSidebar = () => {
     console.log('Filters:', values);
   };
 
+  const priceOptions = [
+    { label: 'Under $25', min: 0, max: 25 },
+    { label: '$25 - $50', min: 25, max: 50 },
+    { label: '$50 - $100', min: 50, max: 100 },
+    { label: '$100 - $150', min: 100, max: 150 },
+    { label: '$150+', min: 150, max: null },
+  ];
+
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ values }) => (
+      {({ values, setFieldValue, handleChange }) => (
         <Form className="sidebar">
           
           <div className="filter-section">
@@ -31,7 +38,6 @@ const FilterSidebar = () => {
             ))}
           </div>
 
-          
           <div className="filter-section">
             <h4>Sale & Offers</h4>
             {['On Sale', 'Special Offer', 'Clearance'].map((s) => (
@@ -42,7 +48,6 @@ const FilterSidebar = () => {
             ))}
           </div>
 
-         
           <div className="filter-section">
             <h4>Color</h4>
             <div className="color-options">
@@ -68,56 +73,45 @@ const FilterSidebar = () => {
             </div>
           </div>
 
-          
           <div className="filter-section">
             <h4>Shop by Price</h4>
-            {[
-              'Under $25',
-              '$25 - $50',
-              '$50 - $100',
-              '$100 - $150',
-              '$150+',
-            ].map((p) => (
-              <label key={p}>
-                <Field type="checkbox" name="price" value={p} />
-                {p}
-              </label>
-            ))}
+            {priceOptions.map((p) => {
+              const isSelected =
+                values.price.min === p.min && values.price.max === p.max;
+
+              return (
+                <label key={p.label}>
+                  <input
+                    type="radio"
+                    name="price"
+                    checked={isSelected}
+                    onChange={() =>
+                      setFieldValue('price', { min: p.min, max: p.max })
+                    }
+                  />
+                  {p.label}
+                </label>
+              );
+            })}
           </div>
 
-          
           <div className="filter-section">
             <h4>Size</h4>
             <div className="size-grid">
               {[6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12].map(
                 (size) => (
-                  <Field name="size">
-  {({ field, form }) => {
-    const isChecked = form.values.size.includes(String(size));
-    return (
-      <label
-        key={size}
-        className={`size-box ${isChecked ? 'selected' : ''}`}
-      >
-        <input
-          type="checkbox"
-          name="size"
-          value={String(size)}
-          checked={isChecked}
-          onChange={(e) => {
-            const { checked } = e.target;
-            const newSizes = checked
-              ? [...form.values.size, String(size)]
-              : form.values.size.filter((s) => s !== String(size));
-            form.setFieldValue('size', newSizes);
-          }}
-        />
-        {size}
-      </label>
-    );
-  }}
-</Field>
-
+                  <label
+                    key={size}
+                    className={`size-box ${values.size.includes(String(size)) ? 'selected' : ''}`}
+                  >
+                    <Field
+                      type="checkbox"
+                      name="size"
+                      value={String(size)}
+                      onChange={handleChange}
+                    />
+                    {size}
+                  </label>
                 )
               )}
             </div>
@@ -129,4 +123,3 @@ const FilterSidebar = () => {
 };
 
 export default FilterSidebar;
-

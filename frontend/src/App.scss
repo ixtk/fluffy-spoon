@@ -1,6 +1,5 @@
-
 .sidebar {
-  width: 260px;
+  width: 16.25rem; // 260px
   font-family: sans-serif;
   padding: 1rem;
   background-color: #fff;
@@ -9,7 +8,7 @@
     margin-bottom: 1.5rem;
 
     h4 {
-      font-size: 16px;
+      font-size: 1rem; // 16px
       font-weight: bold;
       margin-bottom: 0.75rem;
       border-bottom: 1px solid #eee;
@@ -19,13 +18,13 @@
     label {
       display: flex;
       align-items: center;
-      font-size: 14px;
+      font-size: 0.875rem; // 14px
       margin-bottom: 0.5rem;
       cursor: pointer;
       gap: 0.5rem;
 
       input[type='checkbox'] {
-        margin-right: 6px;
+        margin-right: 0.375rem; // 6px
       }
     }
   }
@@ -40,11 +39,11 @@
       align-items: center;
 
       .color-circle {
-        width: 16px;
-        height: 16px;
+        width: 1rem; // 16px
+        height: 1rem; // 16px
         border-radius: 50%;
         border: 1px solid #ccc;
-        margin-right: 8px;
+        margin-right: 0.5rem; // 8px
       }
     }
   }
@@ -53,25 +52,25 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
-  
+
     .size-box {
       background: #f8f8f8;
       text-align: center;
       padding: 0.5rem;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 0.375rem; // 6px
+      font-size: 0.875rem; // 14px
       cursor: pointer;
       border: 1px solid transparent;
       transition: 0.2s ease;
-  
+
       input[type='checkbox'] {
         display: none;
       }
-  
+
       &:hover {
         border-color: #333;
       }
-  
+
       &.selected {
         background-color: #f18989;
         color: #fff;
@@ -79,8 +78,4 @@
       }
     }
   }
-  
-    }
-  
-
-
+}
