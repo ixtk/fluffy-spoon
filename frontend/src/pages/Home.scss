@@ -2,14 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 
   .nav-links {
     span {
-      margin: 0 15px;
+      margin: 0 0.9375rem;
       font-weight: bold;
       cursor: pointer;
 
@@ -23,15 +24,15 @@
     display: flex;
     align-items: center;
     background: #f8f8f8;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.3125rem;
 
     input {
       border: none;
       background: none;
       outline: none;
-      padding: 5px;
-      font-size: 14px;
+      padding: 0.3125rem;
+      font-size: 0.875rem;
     }
   }
 
@@ -41,67 +42,101 @@
 
     .icon-container {
       position: relative;
-      margin-left: 15px;
+      margin-left: 0.9375rem;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 1.125rem;
 
       .badge {
         position: absolute;
-        top: -5px;
-        right: -5px;
+        top: -0.3125rem;
+        right: -0.3125rem;
         background: red;
         color: white;
-        font-size: 12px;
+        font-size: 0.54rem;
         border-radius: 50%;
-        padding: 2px 6px;
+        padding: 0.125rem 0.375rem;
       }
     }
   }
 
   .dropdown {
     position: absolute;
-    right: 20px;
-    top: 50px;
+    right: 1.25rem;
+    top: 3.125rem;
     background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 10px;
-    width: 250px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.3125rem;
+    padding: 0.625rem;
+    width: 15.625rem;
     z-index: 10;
 
     h3 {
       margin: 0;
-      font-size: 16px;
+      font-size: 1rem;
       border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+      padding-bottom: 0.3125rem;
     }
 
     .dropdown-item {
       display: flex;
       flex-direction: column;
-      margin: 10px 0;
-      font-size: 14px;
+      margin: 0.625rem 0;
+      font-size: 0.875rem;
     }
 
     .total {
       font-weight: bold;
       text-align: right;
-      margin-top: 10px;
+      margin-top: 0.625rem;
     }
 
-    .checkout-btn, .favorites-btn {
+    .checkout-btn,
+    .favorites-btn {
       width: 100%;
-      padding: 8px;
+      padding: 0.5rem;
       background: black;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 0.3125rem;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 0.625rem;
 
       &:hover {
         background: #333;
       }
     }
+  }
+}
+
+@media (max-width: 48rem) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9375rem;
+
+    .nav-links {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .search-bar {
+      width: 100%;
+      justify-content: center;
+
+      input {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .icons {
+      justify-content: center;
+    }
+  }
+
+  .dropdown {
+    right: 0.625rem;
+    width: 90%;
   }
 }

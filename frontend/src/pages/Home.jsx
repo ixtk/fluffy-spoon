@@ -1,10 +1,13 @@
 import "./Home.scss";
 import React, { useState } from "react";
-import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa"; // Don't forget these!
+import { Search, Heart, ShoppingCart } from "lucide-react";
 
-export const HomePage = () => {
-  const [showCart, setShowCart] = useState(false);
-  const [showFavorites, setShowFavorites] = useState(false);
+export const App = () => {
+  const [dropdown, setDropdown] = useState(null);
+
+  const toggleDropdown = (type) => {
+    setDropdown((prev) => (prev === type ? null : type));
+  };
 
   const cartItems = [
     { name: "TrailMaster Hiking Boots", price: 149.99, qty: 1, color: "Brown" },
@@ -22,22 +25,24 @@ export const HomePage = () => {
         <span>Men</span>
         <span>Women</span>
       </div>
+
       <div className="search-bar">
-        <FaSearch />
+        <Search size={16} />
         <input type="text" placeholder="Search products..." />
       </div>
+
       <div className="icons">
-        <div className="icon-container" onClick={() => setShowFavorites(!showFavorites)}>
-          <FaHeart />
+        <div className="icon-container" onClick={() => toggleDropdown("favorites")}>
+          <Heart size={18} />
           {favoriteItems.length > 0 && <span className="badge">{favoriteItems.length}</span>}
         </div>
-        <div className="icon-container" onClick={() => setShowCart(!showCart)}>
-          <FaShoppingCart />
+        <div className="icon-container" onClick={() => toggleDropdown("cart")}>
+          <ShoppingCart size={18} />
           {cartItems.length > 0 && <span className="badge">{cartItems.length}</span>}
         </div>
       </div>
 
-      {showCart && (
+      {dropdown === "cart" && (
         <div className="dropdown cart">
           <h3>Shopping Cart</h3>
           {cartItems.map((item, index) => (
@@ -48,12 +53,14 @@ export const HomePage = () => {
               <span>Qty: {item.qty}</span>
             </div>
           ))}
-          <div className="total">Total: ${cartItems.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2)}</div>
+          <div className="total">
+            Total: ${cartItems.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2)}
+          </div>
           <button className="checkout-btn">Checkout</button>
         </div>
       )}
 
-      {showFavorites && (
+      {dropdown === "favorites" && (
         <div className="dropdown favorites">
           <h3>Favorites</h3>
           {favoriteItems.map((item, index) => (
@@ -70,4 +77,4 @@ export const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default App;
