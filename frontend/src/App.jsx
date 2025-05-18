@@ -7,6 +7,7 @@ import { LoginPage } from "./pages/LoginPage"
 import { RegisterPage } from "./pages/RegisterPage"
 import { EditProduct } from "@/pages/EditProduct"
 import { Userpage } from "./Userpage/userpage"
+import { Dashboard } from "./dashboard/dashboard"
 
 function App() {
   const ProtectedRoute = () => {
@@ -48,6 +49,7 @@ function App() {
       <Route element={<ProtectedRoute />}>
         <Route path="/userpage" element={<Userpage />} />
         <Route path="/secret" element={<h1>2 x 2 = 4</h1>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit-product" element={<EditProduct />} />
       </Route>
     </Routes>
