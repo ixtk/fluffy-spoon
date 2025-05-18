@@ -10,7 +10,7 @@ import { Userpage } from "./Userpage/userpage"
 import { Dashboard } from "./dashboard/dashboard"
 import { ProductReview } from "./pages/ProductReview"
 
-function App() {
+export default function App() {
   const ProtectedRoute = () => {
     const { authState } = useContext(AuthContext)
 
@@ -39,6 +39,7 @@ function App() {
     }
   }
 
+
   return (
     <Routes>
       <Route index element={<HomePage />} />
@@ -57,5 +58,3 @@ function App() {
     </Routes>
   )
 }
-
-export default App
