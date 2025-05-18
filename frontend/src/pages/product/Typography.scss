@@ -1,4 +1,4 @@
-@use './Variables.scss';
+@use 'Variables';
 body {
     font-family: "Geist", sans-serif;
     background-color: Variables.$col-light;

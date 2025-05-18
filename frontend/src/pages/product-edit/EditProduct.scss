@@ -1,7 +1,7 @@
-@use "./GeneralInfo.scss";
-@use "./MediaQueries.scss";
-@use "./VariantSizes.scss";
-@use "./VariantInfo.scss";
+@use "GeneralInfo";
+@use "MediaQueries";
+@use "VariantSizes";
+@use "VariantInfo";
 
 * {
     padding: 0;

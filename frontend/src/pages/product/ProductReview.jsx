@@ -1,4 +1,4 @@
-import '../styles/Main.scss';
+import './Main.scss';
 import { Dialog } from '@headlessui/react'
 import { useState } from "react"
 import { useFormik } from "formik";

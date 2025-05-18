@@ -1,14 +1,15 @@
-import "./App.scss"
+import "./shared/App.scss"
 import { Route, Routes, Navigate, Outlet } from "react-router"
-import { HomePage } from "./pages/Home"
+import { HomePage } from "./pages/home/HomePage.jsx"
 import { useContext } from "react"
-import { AuthContext } from "./AuthContext"
-import { LoginPage } from "./pages/LoginPage"
-import { RegisterPage } from "./pages/RegisterPage"
-import { EditProduct } from "@/pages/EditProduct"
-import { Userpage } from "./Userpage/userpage"
-import { Dashboard } from "./dashboard/dashboard"
-import { ProductReview } from "./pages/ProductReview"
+import { AuthContext } from "./lib/AuthContext.jsx"
+import { LoginPage } from "./pages/login/LoginPage.jsx"
+import { RegisterPage } from "./pages/register/RegisterPage.jsx"
+import { EditProductPage } from "@/pages/product-edit/EditProductPage.jsx"
+import { ProfilePage } from "./pages/profile/ProfilePage.jsx"
+import { DashboardPage } from "./pages/dashboard/DashboardPage.jsx"
+import { ProductReview } from "./pages/product/ProductReview.jsx"
+import { Layout } from "@/shared/Layout.jsx"
 
 export default function App() {
   const ProtectedRoute = () => {
@@ -39,22 +40,23 @@ export default function App() {
     }
   }
 
-
   return (
     <Routes>
-      <Route index element={<HomePage />} />
-      <Route element={<RedirectIfLoggedIn />}>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Route>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route element={<RedirectIfLoggedIn />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/userpage" element={<Userpage />} />
-        <Route path="/secret" element={<h1>2 x 2 = 4</h1>} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/edit-product" element={<EditProduct />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/secret" element={<h1>2 x 2 = 4</h1>} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/products/1/edit" element={<EditProductPage />} />
+        </Route>
+        <Route path="/products/1" element={<ProductReview />} />
       </Route>
-      <Route path="/product" element={<ProductReview />} />
     </Routes>
   )
 }

@@ -1,6 +1,6 @@
-import "./userpage.css"
+import "./Profile.scss"
 
-export const Userpage = () => {
+export const ProfilePage = () => {
   return (
     <div className="container">
       <div className="personalinformation">

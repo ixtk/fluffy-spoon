@@ -4,6 +4,12 @@
   margin-top: 16px;
 }
 
+header nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
 .auth-form {
   padding: 20px;
   display: flex;

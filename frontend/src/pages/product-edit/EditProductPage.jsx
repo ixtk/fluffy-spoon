@@ -1,8 +1,8 @@
-import { ProductVariant } from "./components/ProductVariant"
+import { ProductVariant } from "../components/ProductVariant.jsx"
 import "./EditProduct.scss"
 import { useFormik } from "formik"
 
-export const EditProduct = () => {
+export const EditProductPage = () => {
   const form = useFormik({
     initialValues: {
       productName: "UltraGlide Pro Running Shoes",

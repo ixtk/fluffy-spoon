@@ -1,10 +1,10 @@
 import { useContext } from "react"
-import { AuthContext } from "../AuthContext"
+import { AuthContext } from "../../lib/AuthContext.jsx"
 import { useNavigate } from "react-router"
-import { Form } from "../components/Form"
+import { Form } from "../../shared/Form.jsx"
 import { string, object } from "yup"
 import { useFormik } from "formik"
-import { axiosInstance } from "../axiosInstance"
+import { axiosInstance } from "../../lib/axiosInstance.js"
 
 export const LoginPage = () => {
   const { setAuthState } = useContext(AuthContext)

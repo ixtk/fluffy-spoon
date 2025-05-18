@@ -1,5 +1,5 @@
-@use './Variables.scss';
-@use './Mixin.scss' ;
+@use './Variables';
+@use './Mixin';
 .reviews {
     display: flex;
     flex-direction: column;

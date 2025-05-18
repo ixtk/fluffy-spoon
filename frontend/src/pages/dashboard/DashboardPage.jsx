@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./dashboard.scss";
+import "./Dashboard.scss";
 
 const allProducts = [
   {
@@ -121,7 +121,7 @@ const allProducts = [
   },
 ];
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const productsPerPage = 10;
