@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthContext"
 import { LoginPage } from "./pages/LoginPage"
 import { RegisterPage } from "./pages/RegisterPage"
 import { EditProduct } from "@/pages/EditProduct"
+import { ProductReview } from "./pages/ProductReview"
 
 function App() {
   const ProtectedRoute = () => {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/secret" element={<h1>2 x 2 = 4</h1>} />
         <Route path="/edit-product" element={<EditProduct />} />
       </Route>
+      <Route path="/product" element={<ProductReview />} />
     </Routes>
   )
 }

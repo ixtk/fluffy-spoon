@@ -1,0 +1,11 @@
+@use './Variables.scss';
+body {
+    font-family: "Geist", sans-serif;
+    background-color: Variables.$col-light;
+  }
+  
+  .reviewTitle {
+    color: Variables.$col-dark;
+    font-size: 1.4rem;
+    z-index: 1;
+  }
