@@ -1,7 +1,19 @@
-import products from "@/mock-data/products.json"
 import { ProductCard } from "@/pages/products/ProductCard.jsx"
+import { useEffect, useState } from "react";
+import { axiosInstance } from "@/lib/axiosInstance.js";
 
 export const ProductsPage = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const response = await axiosInstance.get("/products")
+            setProducts(response.data)
+        }
+
+        fetchProducts()
+    }, [])
+
   return (
     <>
       <h2 className="page-title">All products</h2>
@@ -9,7 +21,7 @@ export const ProductsPage = () => {
         {products.map((product, index) => (
           <ProductCard
             key={index}
-            id={index}
+            id={product._id}
             category={product.category}
             title={product.title}
             regularPrice={product.regularPrice}

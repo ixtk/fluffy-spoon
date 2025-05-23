@@ -14,3 +14,5 @@ productRouter.post("/:id/review", addReview)
 productRouter.delete("/:productId/review/:reviewId", deleteReview)
 productRouter.get("/:id", getProductById)
 productRouter.get("/", getProductList)
+
+// /products/productId
