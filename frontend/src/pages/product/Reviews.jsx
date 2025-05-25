@@ -5,9 +5,9 @@ import {axiosInstance} from "@/lib/axiosInstance.js";
 export const Reviews = ({ reviews, productId }) => {
   const [writingReview, setWritingReview] = useState(false)
   const [newReview, setNewReview] = useState({
-    title: "",
-    description: "",
     starRating: 0,
+    title: "",
+    description: ""
   })
 
   const reviewElements = reviews.map((review, index) => (
@@ -26,18 +26,7 @@ export const Reviews = ({ reviews, productId }) => {
     </div>
   ))
 
-  const saveReview = async (event) => {
-    event.preventDefault()
-
-    const response = await axiosInstance.post(`/products/${productId}/review`, newReview)
-
-    console.log('result ->', response)
-
-    // localhost:3000/products/<id>/review
-    // TODO: send newReview state values to backend, add a new review to THIS product
-    // TODO: using axiosInstance.post("...", newReview)
-    // TODO: reviews also need authorId (from backend models.js definition)
-  }
+  console.log(newReview)
 
   return (
     <div>
@@ -57,14 +46,17 @@ export const Reviews = ({ reviews, productId }) => {
           <div className="form-group">
             <label htmlFor="rating">Rating</label>
             <div className="star-container">
-              {[1, 2, 3, 4, 5].map((starNumber) => {
-                // console.log("I will save", starNumber)
-
+              {Array.from({ length: 5 }).map((_, starIndex) => {
+                // starIndex = 0, 1, 2, 3, 4
                 return (
-                  <button key={starNumber} type="button" onClick={
-                    () => setNewReview({...newReview, starRating: starNumber })
-                  }>
-                    <Star stroke="#fecd55"/>
+                  <button
+                    key={starIndex}
+                    type="button"
+                    onClick={() =>
+                      setNewReview({ ...newReview, starRating: starIndex + 1 })
+                    }
+                  >
+                    <Star key={starIndex} stroke="#fecd55" />
                   </button>
                 )
               })}
@@ -73,12 +65,24 @@ export const Reviews = ({ reviews, productId }) => {
 
           <div className="form-group">
             <label htmlFor="headline">Headline</label>
-            <input type="text" id="headline" onChange={event => setNewReview({ ...newReview, title: event.target.value })} />
+            <input
+              type="text"
+              id="headline"
+              onChange={event =>
+                setNewReview({ ...newReview, title: event.target.value })
+              }
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="description">Review</label>
-            <textarea id="description" rows="3" onChange={event => setNewReview({ ...newReview, description: event.target.value })}></textarea>
+            <textarea
+              id="description"
+              rows="3"
+              onChange={event =>
+                setNewReview({ ...newReview, description: event.target.value })
+              }
+            ></textarea>
           </div>
           <div className="btn-container">
             <button
