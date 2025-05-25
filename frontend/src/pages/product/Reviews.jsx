@@ -28,6 +28,13 @@ export const Reviews = ({ reviews, productId }) => {
 
   console.log(newReview)
 
+  const saveReview = event => {
+    event.preventDefault()
+
+    // TODO: send newReview state values to backend, add a new review to THIS product
+    // TODO: using axiosInstance.post
+  }
+
   return (
     <div>
       <div className="reviews-header">
