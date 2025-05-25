@@ -3,6 +3,11 @@ import { useState } from "react"
 
 export const Reviews = ({ reviews }) => {
   const [writingReview, setWritingReview] = useState(false)
+  const [newReview, setNewReview] = useState({
+    title: "",
+    description: "",
+    starRating: 0,
+  })
 
   const reviewElements = reviews.map((review, index) => (
     <div className="review" key={index}>
@@ -20,6 +25,14 @@ export const Reviews = ({ reviews }) => {
     </div>
   ))
 
+  const saveReview = (event) => {
+    event.preventDefault()
+
+    // TODO: send newReview state values to backend, add a new review to THIS product
+    // TODO: using axiosInstance.post
+    // TODO: reviews also need authorId (from backend models.js definition)
+  }
+
   return (
     <div>
       <div className="reviews-header">
@@ -34,26 +47,32 @@ export const Reviews = ({ reviews }) => {
         )}
       </div>
       {writingReview ? (
-        <form className="card review-form">
+        <form className="card review-form" onSubmit={saveReview}>
           <div className="form-group">
             <label htmlFor="rating">Rating</label>
             <div className="star-container">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <button type="button">
-                  <Star key={i} stroke="#fecd55" />
-                </button>
-              ))}
+              {[1, 2, 3, 4, 5].map((starNumber) => {
+                // console.log("I will save", starNumber)
+
+                return (
+                  <button key={starNumber} type="button" onClick={
+                    () => setNewReview({...newReview, starRating: starNumber })
+                  }>
+                    <Star stroke="#fecd55"/>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="headline">Headline</label>
-            <input type="text" id="headline" />
+            <input type="text" id="headline" onChange={event => setNewReview({ ...newReview, title: event.target.value })} />
           </div>
 
           <div className="form-group">
             <label htmlFor="description">Review</label>
-            <textarea id="description" rows="3"></textarea>
+            <textarea id="description" rows="3" onChange={event => setNewReview({ ...newReview, description: event.target.value })}></textarea>
           </div>
           <div className="btn-container">
             <button
