@@ -12,4 +12,4 @@ createRoot(document.getElementById("root")).render(
       </BrowserRouter>
     </AuthContextProvider>
   </StrictMode>
-)
+);
