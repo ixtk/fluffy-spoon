@@ -8,12 +8,12 @@ import { setPersistence, getAuth, browserLocalPersistence } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCUX-JvXDhNo6ecM_uG5NIaomE9n5bo3cI",
-  authDomain: "fluffy-umbrella-f13c2.firebaseapp.com",
-  projectId: "fluffy-umbrella-f13c2",
-  storageBucket: "fluffy-umbrella-f13c2.firebasestorage.app",
-  messagingSenderId: "56453816350",
-  appId: "1:56453816350:web:acb431882737a763ae8e0f"
+  apiKey: "AIzaSyDV0QiZ_P7oNiVkZptgsaBdKcjSS2qyCbs",
+  authDomain: "something-cool-a11a7.firebaseapp.com",
+  projectId: "something-cool-a11a7",
+  storageBucket: "something-cool-a11a7.firebasestorage.app",
+  messagingSenderId: "752341394369",
+  appId: "1:752341394369:web:d6b4f81c63d70fc4f18540"
 };
 
 const app = initializeApp(firebaseConfig);

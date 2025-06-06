@@ -6,13 +6,12 @@ import {
   deleteReview,
   getProductList
 } from "../controllers/productControllers.js"
+import {verifyAuth} from "../middleware.js"
 
 export const productRouter = new express.Router()
 
-productRouter.post("/", createProduct)
-productRouter.post("/:id/review", addReview)
-productRouter.delete("/:productId/review/:reviewId", deleteReview)
+productRouter.post("/", verifyAuth, createProduct)
+productRouter.post("/:id/review", verifyAuth, addReview)
+productRouter.delete("/:productId/review/:reviewId", verifyAuth, deleteReview)
 productRouter.get("/:id", getProductById)
 productRouter.get("/", getProductList)
-
-// /products/productId

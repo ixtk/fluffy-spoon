@@ -1,0 +1,68 @@
+.product-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  grid-template-areas:
+    "title"
+    "category"
+    "price"
+    "sale-price"
+    "img-url"
+    "description"
+    "save";
+}
+
+@media (min-width: 600px) {
+  .product-form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title category"
+      "price sale-price"
+      "img-url img-url"
+      "description description"
+      "save save";
+  }
+}
+
+.save {
+  grid-area: save;
+}
+
+.product-form button {
+  margin-left: auto;
+  margin-top: 8px;
+}
+
+button.save {
+  margin-left: auto;
+}
+
+.title {
+  grid-area: title;
+}
+
+.category {
+  grid-area: category;
+}
+
+.price {
+  grid-area: price;
+}
+
+.sale-price {
+  grid-area: sale-price;
+}
+
+.img-url {
+  grid-area: img-url;
+}
+
+.description {
+  grid-area: description;
+}
+
+.save {
+  display: flex;
+  justify-content: flex-end;
+}

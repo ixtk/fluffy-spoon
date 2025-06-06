@@ -9,7 +9,7 @@ export const createProduct = async (req, res) => {
 }
 
 export const addReview = async (req, res) => {
-  const reviewValues = req.body
+  const reviewValues = {...req.body, authorId: req.user.user_id }
 
   const product = await Product.findById(req.params.id)
 

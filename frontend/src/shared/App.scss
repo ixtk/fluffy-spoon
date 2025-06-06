@@ -67,6 +67,11 @@ html, body, #root {
   color: var(--white);
 }
 
+.btn-danger {
+  background-color: var(--red-700);
+  color: var(--white);
+}
+
 .btn-icon {
   svg {
     width: 18px;

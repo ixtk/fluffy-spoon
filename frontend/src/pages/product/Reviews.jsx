@@ -10,6 +10,20 @@ export const Reviews = ({ reviews, productId }) => {
     description: ""
   })
 
+  // TODO: add reviews state
+
+  const saveReview = event => {
+    event.preventDefault()
+
+    console.log('Running!', newReview)
+
+    axiosInstance.post(`/products/${productId}/review`, newReview)
+  }
+
+  const deleteReview = async (reviewId) => {
+    axiosInstance.delete(`/products/${productId}/review/${reviewId}`)
+  }
+
   const reviewElements = reviews.map((review, index) => (
     <div className="review" key={index}>
       <div className="star-container">
@@ -23,17 +37,9 @@ export const Reviews = ({ reviews, productId }) => {
       </div>
       <p className="title">{review.title}</p>
       <p className="description">{review.description}</p>
+      <button className="btn btn-danger" onClick={() => deleteReview(review._id)}>Delete</button>
     </div>
   ))
-
-  console.log(newReview)
-
-  const saveReview = event => {
-    event.preventDefault()
-
-    // TODO: send newReview state values to backend, add a new review to THIS product
-    // TODO: using axiosInstance.post
-  }
 
   return (
     <div>
@@ -54,7 +60,6 @@ export const Reviews = ({ reviews, productId }) => {
             <label htmlFor="rating">Rating</label>
             <div className="star-container">
               {Array.from({ length: 5 }).map((_, starIndex) => {
-                // starIndex = 0, 1, 2, 3, 4
                 return (
                   <button
                     key={starIndex}
@@ -63,7 +68,7 @@ export const Reviews = ({ reviews, productId }) => {
                       setNewReview({ ...newReview, starRating: starIndex + 1 })
                     }
                   >
-                    <Star key={starIndex} stroke="#fecd55" />
+                    <Star stroke="#fecd55" fill={starIndex < newReview.starRating ? "#fecd55" : "none"} />
                   </button>
                 )
               })}

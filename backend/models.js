@@ -8,6 +8,13 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
+const ReviewSchema = new mongoose.Schema({
+  starRating: { required: true, type: Number },
+  title: { required: true, type: String },
+  description: String,
+  authorId: { type: String, required: false }
+}, {timestamps: true})
+
 const ProductSchema = new mongoose.Schema(
   {
     title: {
@@ -22,14 +29,7 @@ const ProductSchema = new mongoose.Schema(
     isOnSale: Boolean,
     description: String,
     images: [String],
-    reviews: [
-      {
-        starRating: { required: true, type: Number },
-        title: { required: true, type: String },
-        description: String,
-        authorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-      }
-    ],
+    reviews: [ReviewSchema],
     category: String
   },
   { timestamps: true }
