@@ -101,6 +101,11 @@
 
 .thumbnail img {
   border-radius: var(--border-radius);
+  object-fit: contain;
+}
+
+.thumbnail {
+  max-height: 300px;
 }
 
 .quantity-container {

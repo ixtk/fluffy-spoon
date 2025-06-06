@@ -11,6 +11,10 @@ export const ProductPage = () => {
   const [itemQuantity, setItemQuantity] = useState(1)
   const [product, setProduct] = useState({})
 
+  const setReviews = newReviews => {
+    setProduct({ ...product, reviews: newReviews })
+  }
+
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await axiosInstance.get(`/products/${productId}`)
@@ -24,7 +28,7 @@ export const ProductPage = () => {
     <div>
       <div className="product-container">
         <div className="thumbnail">
-          <img src={product?.images?.[0]} />
+          <img src={product?.imageUrl} />
         </div>
         <div className="details">
           <h2 className="title">{product.title}</h2>
@@ -62,7 +66,11 @@ export const ProductPage = () => {
         </div>
       </div>
       <div className="divider"></div>
-      <Reviews productId={productId} initialReviews={product.reviews ?? []} />
+      <Reviews
+        productId={productId}
+        reviews={product.reviews ?? []}
+        setReviews={setReviews}
+      />
     </div>
   )
 }

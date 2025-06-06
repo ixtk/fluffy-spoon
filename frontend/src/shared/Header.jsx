@@ -13,7 +13,7 @@ export const Header = () => {
     await signOut(auth)
   }
 
-  const loginWithProvider = async (provider) => {
+  const loginWithProvider = async provider => {
     await signInWithPopup(auth, provider)
     await axiosInstance.post("/users/social-auth")
   }
@@ -28,7 +28,12 @@ export const Header = () => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/products">Products</NavLink>
+              <NavLink to="/products" end>
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/products/new">Create new</NavLink>
             </li>
           </ul>
         </nav>
@@ -36,11 +41,17 @@ export const Header = () => {
           <div className="social-auth-container">
             <p>Sign in with</p>
             <div className="social-btns">
-              <button onClick={() => loginWithProvider(googleProvider)} className="social-btn btn btn-secondary">
+              <button
+                onClick={() => loginWithProvider(googleProvider)}
+                className="social-btn btn btn-secondary"
+              >
                 <img src="/google-logo.webp" />
                 {/*<span>Sign in</span>*/}
               </button>
-              <button onClick={() => loginWithProvider(facebookProvider)} className="social-btn btn btn-secondary">
+              <button
+                onClick={() => loginWithProvider(facebookProvider)}
+                className="social-btn btn btn-secondary"
+              >
                 <img src="/facebook-logo.png" />
                 {/*<span>Sign in</span>*/}
               </button>

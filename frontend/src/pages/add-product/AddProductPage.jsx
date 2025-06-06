@@ -1,12 +1,16 @@
 import "./AddProduct.scss"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
+import { axiosInstance } from "@/lib/axiosInstance"
+import { useNavigate } from "react-router"
 
 export const AddProductPage = () => {
+  const navigate = useNavigate()
+
   const initialValues = {
     title: "",
     category: "Electronics",
-    price: "",
+    regularPrice: "",
     salePrice: "",
     imageUrl: "",
     description: ""
@@ -17,7 +21,7 @@ export const AddProductPage = () => {
       .min(2, "Title must be at least 2 characters")
       .required("Required"),
     category: Yup.string().required("Required"),
-    price: Yup.number()
+    regularPrice: Yup.number()
       .min(1, "Price must be at least 1")
       .max(100000, "Price too high")
       .required("Required"),
@@ -42,9 +46,11 @@ export const AddProductPage = () => {
     description: Yup.string().notRequired()
   })
 
-  const handleSubmit = values => {
+  const handleSubmit = async values => {
     console.log("Form data:", values)
     // You can send values to backend here
+    const response = await axiosInstance.post("/products", values)
+    navigate(`/products/${response.data._id}`)
   }
 
   return (
@@ -88,7 +94,7 @@ export const AddProductPage = () => {
               <Field
                 type="number"
                 id="price"
-                name="price"
+                name="regularPrice"
                 min="1"
                 max="100000"
                 placeholder="Price"

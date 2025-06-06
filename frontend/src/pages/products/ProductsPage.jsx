@@ -1,18 +1,18 @@
 import { ProductCard } from "@/pages/products/ProductCard.jsx"
-import { useEffect, useState } from "react";
-import { axiosInstance } from "@/lib/axiosInstance.js";
+import { useEffect, useState } from "react"
+import { axiosInstance } from "@/lib/axiosInstance.js"
 
 export const ProductsPage = () => {
-    const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([])
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            const response = await axiosInstance.get("/products")
-            setProducts(response.data)
-        }
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axiosInstance.get("/products")
+      setProducts(response.data)
+    }
 
-        fetchProducts()
-    }, [])
+    fetchProducts()
+  }, [])
 
   return (
     <>
@@ -26,7 +26,7 @@ export const ProductsPage = () => {
             title={product.title}
             regularPrice={product.regularPrice}
             salePrice={product.salePrice}
-            thumbnail={product?.images?.[0]}
+            thumbnail={product?.imageUrl || "https://placehold.co/600x400"}
           />
         ))}
       </div>

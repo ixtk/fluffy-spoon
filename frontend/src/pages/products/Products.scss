@@ -25,6 +25,12 @@
   gap: 8px;
 }
 
+.product-card img {
+  height: 230px;
+  object-fit: cover;
+  width: 100%;
+}
+
 .price-container {
   display: flex;
   align-items: center;

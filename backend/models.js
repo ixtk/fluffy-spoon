@@ -8,12 +8,15 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-const ReviewSchema = new mongoose.Schema({
-  starRating: { required: true, type: Number },
-  title: { required: true, type: String },
-  description: String,
-  authorId: { type: String, required: false }
-}, {timestamps: true})
+const ReviewSchema = new mongoose.Schema(
+  {
+    starRating: { required: true, type: Number },
+    title: { required: true, type: String },
+    description: String,
+    authorId: { type: String, required: false }
+  },
+  { timestamps: true }
+)
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -28,7 +31,7 @@ const ProductSchema = new mongoose.Schema(
     salePrice: Number,
     isOnSale: Boolean,
     description: String,
-    images: [String],
+    imageUrl: String,
     reviews: [ReviewSchema],
     category: String
   },

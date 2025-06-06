@@ -2,14 +2,13 @@ import { Star } from "lucide-react"
 import { useState } from "react"
 import { axiosInstance } from "@/lib/axiosInstance.js"
 
-export const Reviews = ({ initialReviews, productId }) => {
+export const Reviews = ({ reviews, setReviews, productId }) => {
   const [writingReview, setWritingReview] = useState(false)
   const [newReview, setNewReview] = useState({
     starRating: 0,
     title: "",
     description: ""
   })
-  const [reviews, setReviews] = useState([])
 
   // TODO: add reviews state
 
@@ -25,7 +24,12 @@ export const Reviews = ({ initialReviews, productId }) => {
   }
 
   const deleteReview = async reviewId => {
-    axiosInstance.delete(`/products/${productId}/review/${reviewId}`)
+    const response = await axiosInstance.delete(
+      `/products/${productId}/review/${reviewId}`
+    )
+
+    setReviews(response.data)
+    setWritingReview(false)
   }
 
   const reviewElements = reviews.map((review, index) => (
