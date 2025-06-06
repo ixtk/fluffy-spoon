@@ -1,26 +1,30 @@
 import { Star } from "lucide-react"
 import { useState } from "react"
-import {axiosInstance} from "@/lib/axiosInstance.js";
+import { axiosInstance } from "@/lib/axiosInstance.js"
 
-export const Reviews = ({ reviews, productId }) => {
+export const Reviews = ({ initialReviews, productId }) => {
   const [writingReview, setWritingReview] = useState(false)
   const [newReview, setNewReview] = useState({
     starRating: 0,
     title: "",
     description: ""
   })
+  const [reviews, setReviews] = useState([])
 
   // TODO: add reviews state
 
-  const saveReview = event => {
+  const saveReview = async event => {
     event.preventDefault()
 
-    console.log('Running!', newReview)
-
-    axiosInstance.post(`/products/${productId}/review`, newReview)
+    const response = await axiosInstance.post(
+      `/products/${productId}/review`,
+      newReview
+    )
+    setReviews(response.data)
+    setWritingReview(false)
   }
 
-  const deleteReview = async (reviewId) => {
+  const deleteReview = async reviewId => {
     axiosInstance.delete(`/products/${productId}/review/${reviewId}`)
   }
 
@@ -37,7 +41,12 @@ export const Reviews = ({ reviews, productId }) => {
       </div>
       <p className="title">{review.title}</p>
       <p className="description">{review.description}</p>
-      <button className="btn btn-danger" onClick={() => deleteReview(review._id)}>Delete</button>
+      <button
+        className="btn btn-danger"
+        onClick={() => deleteReview(review._id)}
+      >
+        Delete
+      </button>
     </div>
   ))
 
@@ -68,7 +77,12 @@ export const Reviews = ({ reviews, productId }) => {
                       setNewReview({ ...newReview, starRating: starIndex + 1 })
                     }
                   >
-                    <Star stroke="#fecd55" fill={starIndex < newReview.starRating ? "#fecd55" : "none"} />
+                    <Star
+                      stroke="#fecd55"
+                      fill={
+                        starIndex < newReview.starRating ? "#fecd55" : "none"
+                      }
+                    />
                   </button>
                 )
               })}

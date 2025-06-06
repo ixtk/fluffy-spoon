@@ -62,7 +62,7 @@ export const ProductPage = () => {
         </div>
       </div>
       <div className="divider"></div>
-      <Reviews productId={productId} reviews={product.reviews ?? []} />
+      <Reviews productId={productId} initialReviews={product.reviews ?? []} />
     </div>
   )
 }
