@@ -3,15 +3,18 @@ import mongoose from "mongoose"
 import { productRouter } from "./routers/productRouter.js"
 import { userRouter } from "./routers/userRouter.js"
 import cors from "cors"
+import dotenv from "dotenv"
+
+dotenv.config()
+
+const { MONGODB_URL, ALLOWED_ORIGIN, PORT } = process.env
 
 export const app = express()
-
-const MONGODB_URL = "mongodb://127.0.0.1:27017/fluffy-umbrella"
 
 app.use(express.json())
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ALLOWED_ORIGIN,
     credentials: true
   })
 )
@@ -26,6 +29,6 @@ try {
   console.log(error)
 }
 
-app.listen(3000, async () => {
-  console.log("Running on port 3000")
+app.listen(PORT, async () => {
+  console.log(`Running on port ${PORT}`)
 })
